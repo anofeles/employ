@@ -19,40 +19,41 @@ export const Tasck = ({ navigation }) => {
     });
   };
 
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispach(loadPosts(emai));
-  }, [dispach]);
+    dispatch(loadPosts(emai));
+  }, [dispatch]);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await fetch(
-          `https://api.coinmarketcap.com/v1/ticker/?limit=1`
-        );
-        const json = await response.json();
-        setCount(json);
-        // let response = await fetch(POST_ENDPOINT, {
-        //   method: 'POST',
-        //   headers: {
-        //     Accept: 'application/json',
-        //     'Content-Type': 'application/json'
-        //   },
-        //   body: JSON.stringify({
-        //     token: {
-        //       value: '1'
-        //     }
-        //   })
-        // });
-        // let responseJson = await response.json();
-        // return responseJson;
-      } catch (e) {
-        console.loge('json', e);
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `https://api.coinmarketcap.com/v1/ticker/?limit=1`
+  //       );
+  //       const json = await response.json();
+  //       setCount(json);
+  //       // let response = await fetch(POST_ENDPOINT, {
+  //       //   method: 'POST',
+  //       //   headers: {
+  //       //     Accept: 'application/json',
+  //       //     'Content-Type': 'application/json'
+  //       //   },
+  //       //   body: JSON.stringify({
+  //       //     token: {
+  //       //       value: '1'
+  //       //     }
+  //       //   })
+  //       // });
+  //       // let responseJson = await response.json();
+  //       // return responseJson;
+  //     } catch (e) {
+  //       console.loge('json', e);
+  //     }
+  //   })();
+  // }, []);
 
   const allPost = useSelector(state => state.post.allPosts);
-  console.log(count);
+  // console.log(count);
 
   return <PostList data={allPost} onOpen={openPostHandler} task={'booked'} />;
 };

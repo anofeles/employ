@@ -1,14 +1,21 @@
 import { LOAD_POSTS, TOGGLE_BOOKED, TOKEN_NOTIF } from '../type';
 import { DATA } from '../data';
 
+import { INFO } from '../json/jsonInfo';
+
 const PUSH_ENDPOINT = 'http://api.botasi.ge/notification/';
 const POST_ENDPOINT = 'http://api.botasi.ge/post/';
 
 export const loadPosts = emai => {
-  return {
-    type: LOAD_POSTS,
-    payload: DATA,
-    emai
+  return async dispatch => {
+    const posts = await INFO.getPosts();
+    console.log(posts);
+
+    dispatch({
+      type: LOAD_POSTS,
+      payload: DATA,
+      emai
+    });
   };
 };
 export const toogleBooked = emai => {
@@ -18,6 +25,7 @@ export const toogleBooked = emai => {
     emai
   };
 };
+
 export const tokenNotif = emai => {
   const notif = async () => {
     const response = await fetch(PUSH_ENDPOINT, {
