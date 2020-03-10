@@ -11,6 +11,7 @@ import { useSelector, useEffect, useDispatch } from 'react-redux';
 import * as Device from 'expo-device';
 
 import { toogleBooked } from '../stor/actopns/post';
+import  {AppButton} from '../ui/AppButton'
 
 export const Info = ({ route, navigation }) => {
   const postId = route.params.postId;
@@ -46,13 +47,13 @@ export const Info = ({ route, navigation }) => {
       </View>
 
       <View style={styles.wrapper}>
-        <Button title="მისამართი" onPress={takePhoto} />
+        <AppButton onPress={takePhoto}>მისამართი</AppButton>
       </View>
       <View style={styles.wrapper}>
-        <Button title="გამოწერა" onPress={checked} />
+        <AppButton onPress={checked}>გამოწერა</AppButton>
       </View>
       <View style={styles.wrapper}>
-        <Button title="ნოტიფიკაცია" onPress={notifPhoto} />
+        <AppButton onPress={notifPhoto}>ნოტიფიკაცია</AppButton>
       </View>
     </ScrollView>
   );
@@ -80,6 +81,6 @@ styles = StyleSheet.create({
     color: '#fff'
   },
   wrapper: {
-    marginBottom: 10
+    padding: 10
   }
 });

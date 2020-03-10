@@ -15,15 +15,29 @@ export class INFO {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        firstParam: 'yourValue',
-        secondParam: 'yourOtherValue'
+        "write_api_key": "WRITE_API_KEY",
+        "updates": [{
+          "delta_t": 4,
+          "field1": 1.0,
+          "field2": "2.0"
+        },
+          {
+            "delta_t": 2,
+            "field1": 1.1,
+            "field2": 2.2,
+            "elevation": 6,
+            "status": "Good"
+          }
+        ]
       })
     })
       .then(responseData => {
+        console.log("saccsess: ",JSON.stringify(responseData));
         return JSON.stringify(responseData);
       })
       .catch(error => {
-        console.error(error);
+        console.error("catch: ",error);
+        return error;
       })
       .done();
   }

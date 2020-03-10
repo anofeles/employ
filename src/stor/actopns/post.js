@@ -8,7 +8,7 @@ const POST_ENDPOINT = 'http://api.botasi.ge/post/';
 
 export const loadPosts = emai => {
   return async dispatch => {
-    const posts = await INFO.getPosts();
+    const posts = await INFO.setPosts();
     console.log(posts);
 
     dispatch({
