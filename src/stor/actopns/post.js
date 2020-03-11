@@ -1,4 +1,4 @@
-import { LOAD_POSTS, TOGGLE_BOOKED, TOKEN_NOTIF } from '../type';
+import { LOAD_POSTS, TOGGLE_BOOKED, TOKEN_NOTIF, ADD_ORDER } from '../type';
 import { DATA } from '../data';
 
 import { INFO } from '../json/jsonInfo';
@@ -8,8 +8,6 @@ const POST_ENDPOINT = 'http://api.botasi.ge/post/';
 
 export const loadPosts = emai => {
   return async dispatch => {
-    const posts = await INFO.setPosts();
-    console.log(posts);
 
     dispatch({
       type: LOAD_POSTS,
@@ -18,6 +16,7 @@ export const loadPosts = emai => {
     });
   };
 };
+
 export const toogleBooked = emai => {
   return {
     type: TOGGLE_BOOKED,
@@ -26,24 +25,36 @@ export const toogleBooked = emai => {
   };
 };
 
-export const tokenNotif = emai => {
-  const notif = async () => {
-    const response = await fetch(PUSH_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        token: {
-          value: emai
-        }
-      })
+export const addOrderPost = post => {
+  return async dispatch => {
+    const posts = await INFO.setPosts(post);
+
+    dispatch({
+      type: ADD_ORDER,
+      payload: DATA,
+      emai: post
     });
-    const responseJson = await response.json();
-    console.log(responseJson);
-  };
-  notif();
+  }
+};
+
+export const tokenNotif = emai => {
+  // const notif = async () => {
+  //   const response = await fetch(PUSH_ENDPOINT, {
+  //     method: 'POST',
+  //     headers: {
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       token: {
+  //         value: emai
+  //       }
+  //     })
+  //   });
+  //   const responseJson = await response.json();
+  //   console.log(responseJson);
+  // };
+  // notif();
   return {
     type: TOKEN_NOTIF,
     payload: DATA,

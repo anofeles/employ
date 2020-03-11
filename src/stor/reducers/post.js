@@ -1,4 +1,4 @@
-import { LOAD_POSTS, TOGGLE_BOOKED, TOKEN_NOTIF } from '../type';
+import { LOAD_POSTS, TOGGLE_BOOKED, TOKEN_NOTIF, ADD_ORDER } from '../type';
 
 const initiakState = {
   allPosts: [],
@@ -39,6 +39,14 @@ export const postReducer = (state = initiakState, action) => {
         ...state,
         allPosts: token
       };
+
+    case ADD_ORDER:
+      return {
+        ...state,
+        allPosts: action.payload,
+        emai: action.emai
+      };
+
     default:
       return state;
   }

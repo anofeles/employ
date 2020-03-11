@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  Button,
   ScrollView,
-  Alert
 } from 'react-native';
-import { useSelector, useEffect, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import * as Device from 'expo-device';
 
 import { toogleBooked } from '../stor/actopns/post';

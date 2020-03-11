@@ -7,7 +7,7 @@ export class INFO {
   //     return new Promise((resolve, reject) => {});
   //   }
 
-  static setPosts() {
+  static setPosts(post) {
     return fetch(POST_ENDPOINT, {
       method: 'POST',
       headers: {
@@ -16,29 +16,25 @@ export class INFO {
       },
       body: JSON.stringify({
         "write_api_key": "WRITE_API_KEY",
-        "updates": [{
-          "delta_t": 4,
-          "field1": 1.0,
-          "field2": "2.0"
-        },
-          {
-            "delta_t": 2,
-            "field1": 1.1,
-            "field2": 2.2,
-            "elevation": 6,
-            "status": "Good"
-          }
+        "data": [{
+          "addres": post.addres,
+          "fname": post.fname,
+          "name": post.name,
+          "prise": post.prise,
+          "text": post.text
+        }
         ]
       })
     })
-      .then(responseData => {
-        console.log("saccsess: ",JSON.stringify(responseData));
-        return JSON.stringify(responseData);
-      })
-      .catch(error => {
-        console.error("catch: ",error);
-        return error;
-      })
+        .then(response => response.json())
+        .then(responseJson => {
+          console.log('sucsess',responseJson);
+          return responseJson;
+        })
+        .catch(error => {
+          console.error('error',error);
+          return error;
+        })
       .done();
   }
 

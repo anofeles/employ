@@ -17,7 +17,7 @@ export class Gmap extends Component {
 
   destination = { latitude: 37.771707, longitude: -122.4053769 };
 
-  GOOGLE_MAPS_APIKEY = 'AIzaSyAeCI570AXT_jrxoRJfc3-cncvKBHUbxkw';
+  GOOGLE_MAPS_APIKEY = 'AIzaSyAeCI570AXT_jrxoRJfc3-cncvKBHUbxkw&callback';
 
   componentDidMount() {
     this.getLocationAsync();
