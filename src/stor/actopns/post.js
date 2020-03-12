@@ -27,6 +27,7 @@ export const toogleBooked = emai => {
 
 export const addOrderPost = post => {
   return async dispatch => {
+    console.log(post);
     const posts = await INFO.setPosts(post);
 
     dispatch({
