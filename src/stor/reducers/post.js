@@ -12,14 +12,14 @@ export const postReducer = (state = initiakState, action) => {
       return {
         ...state,
         allPosts: action.payload,
-        emai: action.payload.filter(post => post.task === action.emai),
+        emai: action.payload.filter(post => post.emai === action.emai),
         task: action.payload.filter(post => post.task === action.emai),
         loading: false
       };
     case TOGGLE_BOOKED:
       const allPosts = state.allPosts.map(post => {
         if (post.id === action.emai.id) {
-          console.log(action.emai.emai);
+          console.log(action);
           post.task = action.emai.emai;
         }
         return post;
