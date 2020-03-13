@@ -17,7 +17,6 @@ export const MyTasks = ({navigation}) => {
     const bookedPosts = useSelector(state => state.post.emai);
     const taskPosts = useSelector(state => state.post.task);
 
-
     return (
         <View>
             <PostList data={bookedPosts} onOpen={openPostHandler} task={'booked'}/>

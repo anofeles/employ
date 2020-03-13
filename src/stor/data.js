@@ -60,3 +60,16 @@ export const DATA = [
     date: new Date().toJSON()
   }
 ];
+export const MY_INFO = [
+  {
+    id: '1',
+    name: 'task 1',
+    fname: '10',
+    perNumber: '11 11 11',
+    task: 'my info',
+    img:
+        'https://static.coindesk.com/wp-content/uploads/2019/01/shutterstock_1012724596-860x430.jpg',
+    text: 'Awesome text for post 1',
+    date: new Date().toJSON()
+  }
+];
